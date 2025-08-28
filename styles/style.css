@@ -1,8 +1,8 @@
 :root {
     --lightBg: #f8f9fa;
     --textDark: black;
-    --primaryColor:#4caf50;
-    --primaryDark:#45a059;
+    --primaryColor: #4caf50;
+    --primaryDark: #45a059;
 }
 
 html,
@@ -29,7 +29,7 @@ body {
     /* setting whole content of the page
      to be in the center horizontally
      (setting left and right as auto) */
-     margin-inline: auto;
+    margin-inline: auto;
 }
 
 h1 {
@@ -69,12 +69,14 @@ h1 {
     transition: border-color 0.3s ease;
 
 }
-#searchBox:focus{
+
+#searchBox:focus {
     /* Resetting highligting(border color) in the input search box, 
     when you click inside the box it highlights in color we set */
-border-color: var(--primaryColor);
+    border-color: var(--primaryColor);
 }
-#searchBtn{
+
+#searchBtn {
     padding: 17px 25px;
     font-size: 1rem;
     font-weight: 600;
@@ -87,46 +89,61 @@ border-color: var(--primaryColor);
     /* smooth transition */
     transition: background-color 0.3s;
 }
-#searchBtn:hover{
-    background-color: var(--primaryDark) ;
+
+#searchBtn:hover {
+    background-color: var(--primaryDark);
 }
 
-.randomBtn{
+.randomBtn {
     padding: 10px 25px;
     font-size: 0.95rem;
     font-weight: 600;
-        font-family: "Poppins", sans-serif;
-        background-color: #ff9800;
-        border: none;
-        border-radius: 8px;
-        color: #fff;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .randomBtn:hover{
-        background-color: #f57c00;
-        transform: translateY(-2px);
-        /* Creates a responsive grid
+    font-family: "Poppins", sans-serif;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.randomBtn:hover {
+    background-color: #f57c00;
+    transform: translateY(-2px);
+}
+
+.resultGrid {
+    /* Creates a responsive grid
         aligns all the items horizontally 
         and shirnks the content to fit into width
         if 8items displayed in full view, shrink 
         browwser size half will show 4 items and so on */
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap:25px;
-        margin-top: 30px;
+    display: Grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 
-    }
-.recipeItem img{
+}
+
+.recipeItem {
+    /* Occupies available horizontal width 100% */
+    width: 100%;
+}
+
+
+.recipeItem img {
+    /* Occupies available horizontal width 100% */
     width: 100%;
     height: 220px;
-    /* fit the image as per the positions */
+    /* fit the image as per the positions(image zoom) */
     object-fit: cover;
 }
-.recipeItem{
+
+.recipeItem {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -134,19 +151,22 @@ border-color: var(--primaryColor);
     width: 100%;
     transition: all 0.25s ease-in-out;
 }
-.recipeItem:hover{
+
+.recipeItem:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.);
 }
-.recipeItem h3{
-     font-size: 1.15rem;
+
+.recipeItem h3 {
+    font-size: 1.15rem;
     font-weight: 600;
     padding: 15px;
     margin: 0;
-        font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 
 }
-.popupContainer{
+
+.popupContainer {
     position: fixed;
     /* left,right, top and bottom all are set to 0,
     so it will take the whole screen space available */
@@ -154,7 +174,7 @@ border-color: var(--primaryColor);
     /* setting opacity to 0.6
     this will create a slightly
      greyish background color when the item is clicked  */
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,25 +188,31 @@ border-color: var(--primaryColor);
     padding: 20px;
 
 }
-.popupContainer hidden{
+
+/* Class have hidden added at runtime and there
+shouldnot be any space between class name
+(2values are used for same attivute-class)  */
+.popupContainer.hidden {
     opacity: 0;
     visibility: hidden;
 }
-.popupContent{
+
+.popupContent {
     background-color: #fff;
     /* setting to scroll up and won inside the pop up */
     max-width: 800px;
     max-height: 90vh;
     /* scroll bar */
-     overflow-y: auto;
-     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-     border-radius: 8px;
-     padding: 35px 40px;
-     /* setting close button to right from left 
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 35px 40px;
+    /* setting close button to right from left 
      by choosing relative */
-     position: relative;
+    position: relative;
 }
-.popupContent .popupCloseBtn{
+
+.popupContent .popupCloseBtn {
     /* sets position relative to popup content */
     position: absolute;
     top: 15px;
@@ -203,11 +229,96 @@ border-color: var(--primaryColor);
     cursor: pointer;
     color: #6c757d;
     transform: rotate(45deg);
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 
 }
-.popupContent .popupCloseBtn:hover{
+
+.popupContent .popupCloseBtn:hover {
     transform: rotate(135deg);
     color: var(--textDark);
     background-color: #e2e6ea;
+}
+
+#recipeDetailsContent h2 {
+    font-size: 1.80rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primaryColor);
+}
+
+#recipeDetailsContent img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#recipeDetailsContent h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    /* Adding a line below each heading */
+    border-bottom: 2px solid var(--primaryColor);
+    padding: 8px;
+}
+
+#recipeDetailsContent ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+#recipeDetailsContent ul li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #e9ecef;
+    font-size: 0.95rem;
+}
+
+#recipeDetailsContent ul li:last-child {
+    border-bottom: none;
+}
+
+#recipeDetailsContent p {
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+#recipeDetailsContent a {
+    /* Set color to be same as 
+    others(primary color) */
+    color: var(--primaryColor);
+    /* removing underline in the links */
+    text-decoration: none;
+}
+
+#recipeDetailsContent a :hover {
+    color: var(--primaryDark);
+    text-decoration: underline;
+}
+
+#recipeDetailsContent .videoWrapper {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.infoContainer {
+    margin: 25px auto;
+    padding: 10px;
+    max-width: 600px;
+    font-size: 1rem;
+    border-radius: 8px;
+
+}
+
+.infoContainer.error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.infoContainer.info,
+.infoContainer.loading {
+    color: #17a2b8;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5be;
 }
