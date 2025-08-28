@@ -1,4 +1,6 @@
+//endpoint for search by ingredient name
 const SEARCH_API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+//endpoint for random recipe
 const RANDOM_API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const searchForm = document.getElementById("searchForm");
@@ -60,10 +62,10 @@ function clearMessage() {
   infoArea.className = "message";
 }
 
-function displayRecipes(recipes){
+function displayRecipes(recipes) {
   //response data is the value for the parameter (recipes)
   //check if there is recipe available
-  if(!recipes || recipes.length === 0){
+  if (!recipes || recipes.length === 0) {
     showMessage("No recipes to display");
     return;
   }
@@ -76,11 +78,36 @@ function displayRecipes(recipes){
     // * strMeal is the key which holds value for recipe title
     // * To newly created div - adding all the
     //   data required from response.data()
-    recipeDiv.innerHTML =`
+    recipeDiv.innerHTML = `
     <img src = "${item.strMealThumb}" alt="${item.strMeal}" loading="lazy">
     <h3>${item.strMeal}</h3>`;
     // * append the new div to 
     // the result grid(area created to display search result)
     resultsGrid.appendChild(recipeDiv);
   });
+}
+
+randomButton.addEventListener("click", getRandomRecipe);
+
+
+async function getRandomRecipe() {
+  showMessage("Getting random recipe...", false, true);
+
+  //Clear the result generated (from previous click)
+  resultsGrid.innerHTML = "";
+  try {
+    const response = await fetch(RANDOM_API_URL);
+    //Check the status of response(value is ok) in response data(Json)
+    if (!response.ok) throw new Error("Something went wrong");
+    const data = await response.json();
+    console.log("data: ", data);
+    clearMessage();
+    //Check if there is any result retrieved for user input and also result is not 
+    if(data.meals && data.meals.length > 0){
+      displayRecipes(data.meals);
+    }
+  } catch(error) {
+    showMessage("Failed to generate random recipe", true);
+  }
+
 }
