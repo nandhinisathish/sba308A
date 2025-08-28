@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>308.A.SBA</title>
+    <title>Recipes</title>
     <link rel="stylesheet" href="./styles/style.css">
-    <script defer src = "./index.mjs"></script>
+    <script defer src="./index.mjs"></script>
 </head>
+
 <body>
-    
+    <div class="mainContainer">
+        <h1>Get any recipes</h1>
+        <form id="searchForm" class="srchForm">
+            <input type="text" id="searchBox" placeholder="search by ingredient name" required>
+            <button type="submit" id="searchBtn">Search</button>
+        </form>
+        <div class="randomConatiner">
+            <button id="randomBtn" class="randomBtn">Random recipe</button>
+        </div>
+        <div class="infoContainer" id="information"> </div> 
+        <div class="resultGrid" id="resultGrid">
+            <div class="recipe-item">
+                <img src="" alt=""></div>
+        </div>
+    </div>
+    <div class="popupContainer hidden" id="recipePopup">
+        <div class="popupContent">
+            <button id="popupBtn" class="closeBtn">+</button>
+            <div id="recipeDetails"></div>
+        </div>
+    </hidden>
+
 </body>
+
 </html>

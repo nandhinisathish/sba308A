@@ -1,8 +1,152 @@
-html, body{
+:root {
+    --lightBg: #f8f9fa;
+    --textDark: black;
+    --primaryColor:#4caf50;
+    --primaryDark:#45a059;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-color: aqua;
+    /* background-color: aqua; */
     box-sizing: border-box;
+    color: var(--textDark);
+    background-color: var(--lightBg);
 }
 
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.7;
+    padding: 30px 15px;
+}
+
+.mainContainer {
+    max-width: 1200px;
+    padding: 0 16px;
+    text-align: center;
+    /* setting whole content of the page
+     to be in the center horizontally
+     (setting left and right as auto) */
+     margin-inline: auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+
+}
+
+.srchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    /* setting left and right margin to auto, 
+    content will be in center horizntally */
+    margin-inline: auto;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+
+}
+
+#searchBox {
+    padding: 15px 20px;
+    font-size: 1rem;
+    /* Occupies all the space it can in the box */
+    flex-grow: 1;
+    border: 1px solid e9ecef;
+    /* Rounded corners for top-left and bottom-left */
+    /* topleft topright bottomright bottomleft */
+    border-radius: 8px 0 0 8px;
+    /* Removes highligting(border) in the input search box, 
+    when you click inside the box it highlights in blue */
+    outline: none;
+    transition: border-color 0.3s ease;
+
+}
+#searchBox:focus{
+    /* Resetting highligting(border color) in the input search box, 
+    when you click inside the box it highlights in color we set */
+border-color: var(--primaryColor);
+}
+#searchBtn{
+    padding: 17px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    /* smooth transition */
+    transition: background-color 0.3s;
+}
+#searchBtn:hover{
+    background-color: var(--primaryDark) ;
+}
+
+.randomBtn{
+    padding: 10px 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        background-color: #ff9800;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .randomBtn:hover{
+        background-color: #f57c00;
+        transform: translateY(-2px);
+        /* Creates a responsive grid
+        aligns all the items horizontally 
+        and shirnks the content to fit into width
+        if 8items displayed in full view, shrink 
+        browwser size half will show 4 items and so on */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap:25px;
+        margin-top: 30px;
+
+    }
+.recipeItem img{
+    width: 100%;
+    height: 220px;
+    /* fit the image as per the positions */
+    object-fit: cover;
+}
+
+.popupContainer{
+    position: fixed;
+    /* left,right, top and bottom all are set to 0,
+    so it will take the whole screen space available */
+    inset: 0;
+    /* setting opacity to 0.6
+    this will create a slightly
+     greyish background color when the item is clicked  */
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* setting this element to be on top of other elements */
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    /* setting the all the element in the background to be blurred */
+    backdrop-filter: blur(3px);
+    /* this padding is added to look good on small screens as well */
+    padding: 20px;
+
+}
+.popupContainer hidden{
+    opacity: 0;
+    visibility: hidden;
+}
